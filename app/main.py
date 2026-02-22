@@ -39,6 +39,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+from viv_auth import init_auth
+init_auth(app, engine, models.Base, get_db, app_name="Research Pro")
+
 # ── Root dashboard (no auth) ──────────────────────────────────────────────────
 
 @app.get("/", response_class=HTMLResponse, include_in_schema=False)
